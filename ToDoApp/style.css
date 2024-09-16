@@ -1,0 +1,387 @@
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes slideInFromTop {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+:root {
+    --bg-color-1: #f0f4f8;
+    --bg-color-2: #e2e8f0;
+    --text-color: #2d3748;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --primary-color: #4299e1;
+    --secondary-color: #ed8936;
+    --danger-color: #f56565;
+    --success-color: #48bb78;
+    --border-radius: 16px;
+    --transition: all 0.3s ease;
+}
+
+.dark-mode {
+    --bg-color-1: #1a202c;
+    --bg-color-2: #2d3748;
+    --text-color: #e2e8f0;
+    --card-bg: rgba(45, 55, 72, 0.95);
+    --card-shadow: rgba(255, 255, 255, 0.1);
+    --primary-color: #63b3ed;
+    --secondary-color: #fbd38d;
+    --danger-color: #fc8181;
+    --success-color: #68d391;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 100%);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: var(--card-bg);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 20px 40px var(--card-shadow);
+    transition: var(--transition);
+    animation: fadeIn 0.5s ease-out;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.settings {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+
+#theme-toggle, #language-select {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#theme-toggle:hover, #language-select:hover {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tabs {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab-button {
+    flex: 1;
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.tab-button.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+#todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+#todo-input, #todo-details, #timer-input {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+#todo-input:focus, #todo-details:focus, #timer-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    transform: translateY(-3px);
+}
+
+button {
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+#todo-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#todo-list li {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px var(--card-shadow);
+    transition: var(--transition);
+    animation: fadeIn 0.5s ease-out;
+}
+
+#todo-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--card-shadow);
+}
+
+.todo-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.todo-text {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.todo-details {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.todo-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.todo-actions button {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+}
+
+.delete-btn {
+    background-color: var(--danger-color);
+}
+
+.delete-btn:hover {
+    background-color: var(--danger-color);
+    filter: brightness(110%);
+}
+
+.timer-display, #stopwatch-display {
+    font-size: 4rem;
+    text-align: center;
+    margin: 2.5rem 0;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.timer-container, .stopwatch-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    margin: 10% auto;
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 20px 40px var(--card-shadow);
+    width: 80%;
+    max-width: 600px;
+    animation: scaleIn 0.3s ease-out;
+    position: relative;
+}
+
+.close-modal {
+    color: var(--text-color);
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+#edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#edit-todo-input, #edit-todo-details {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+#edit-todo-input:focus, #edit-todo-details:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+#edit-todo-details {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.modal-buttons button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+#save-edit {
+    background-color: var(--success-color);
+}
+
+#cancel-edit {
+    background-color: var(--danger-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .tab-button, button {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .timer-display, #stopwatch-display {
+        font-size: 3rem;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}

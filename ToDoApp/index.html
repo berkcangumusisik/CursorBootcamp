@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Uygulaması</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="settings">
+            <button id="theme-toggle" class="theme-toggle">🌙</button>
+            <select id="language-select">
+                <option value="tr">Türkçe</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        <h1 id="title">Todo Uygulaması</h1>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="todo">Todo</button>
+            <button class="tab-button" data-tab="timer">Zamanlayıcı</button>
+            <button class="tab-button" data-tab="stopwatch">Kronometre</button>
+        </div>
+        <div id="todo-tab" class="tab-content active">
+            <form id="todo-form">
+                <input type="text" id="todo-input" placeholder="Yeni görev ekle" required>
+                <textarea id="todo-details" placeholder="Görev detayları (isteğe bağlı)"></textarea>
+                <button type="submit" id="add-todo">Ekle</button>
+            </form>
+            <ul id="todo-list"></ul>
+        </div>
+        <div id="timer-tab" class="tab-content">
+            <div class="timer-container">
+                <input type="number" id="timer-input" min="1" placeholder="Dakika">
+                <button id="start-timer">Başlat</button>
+                <button id="stop-timer">Durdur</button>
+            </div>
+            <div id="timer-display" class="timer-display">00:00:00</div>
+        </div>
+        <div id="stopwatch-tab" class="tab-content">
+            <div class="stopwatch-container">
+                <button id="start-stopwatch">Başlat</button>
+                <button id="stop-stopwatch">Durdur</button>
+                <button id="reset-stopwatch">Sıfırla</button>
+            </div>
+            <div id="stopwatch-display" class="timer-display">00:00:00</div>
+        </div>
+    </div>
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="edit-title">Todo Düzenle</h2>
+            <form id="edit-form">
+                <input type="text" id="edit-todo-input" placeholder="Görevi düzenle" required>
+                <textarea id="edit-todo-details" placeholder="Görev detaylarını düzenle"></textarea>
+                <div class="modal-buttons">
+                    <button type="submit" id="save-edit">Kaydet</button>
+                    <button type="button" id="cancel-edit">İptal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
