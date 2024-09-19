@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Onay dialogu gösteren fonksiyon
-    // Bu fonksiyon, kullanıcıya bir onay mesajı gösterir ve kullanıcının seçimine göre işlem yapar
+    // Bu fonksiyon, kullanıcıya bir onay mesajı gösterir ve kullanıcının seçimine göre işlem yapar.
     function showConfirmDialog(message, onConfirm) {
         const dialog = document.createElement('div');
         dialog.className = 'confirm-dialog';

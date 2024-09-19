@@ -1,9 +1,10 @@
-# Todo Uygulaması
+# Todo Uygulaması / Todo Application
+
+## Türkçe
 
 Bu proje, modern web teknolojileri kullanılarak geliştirilmiş kapsamlı bir Todo uygulamasıdır. Uygulama, görev yönetimi, zamanlayıcı ve kronometre özelliklerini bir arada sunmaktadır.
 
-
-## Özellikler
+### Özellikler
 
 - Görev ekleme, düzenleme ve silme
 - Görevlere detay ekleme
@@ -14,19 +15,19 @@ Bu proje, modern web teknolojileri kullanılarak geliştirilmiş kapsamlı bir T
 - Karanlık mod / Aydınlık mod
 - Responsive tasarım
 
-## Teknolojiler
+### Teknolojiler
 
 - HTML5
 - CSS3 (Flexbox, CSS Grid, Animations)
 - JavaScript (ES6+)
 
-## Dosya Yapısı
+### Dosya Yapısı
 
 - `index.html`: Ana HTML yapısı
 - `style.css`: Tüm stillendirmeler ve animasyonlar
 - `script.js`: Uygulamanın tüm işlevselliği
 
-## Nasıl Çalışır?
+### Nasıl Çalışır?
 
 1. Görev Yönetimi:
    - Yeni görevler eklenebilir, düzenlenebilir ve silinebilir.
@@ -49,12 +50,13 @@ Bu proje, modern web teknolojileri kullanılarak geliştirilmiş kapsamlı bir T
 
 Bu Todo uygulaması, modern web geliştirme tekniklerini kullanarak gelişmiş özellikler sunan, kullanıcı dostu bir arayüze sahiptir. Responsive tasarımı sayesinde farklı cihazlarda sorunsuz çalışır.
 
-# Todo Application
+---
+
+## English
 
 This project is a comprehensive Todo application developed using modern web technologies. The application combines task management, timer, and stopwatch features.
 
-
-## Features
+### Features
 
 - Add, edit, and delete tasks
 - Add details to tasks
@@ -65,19 +67,19 @@ This project is a comprehensive Todo application developed using modern web tech
 - Dark mode / Light mode
 - Responsive design
 
-## Technologies
+### Technologies
 
 - HTML5
 - CSS3 (Flexbox, CSS Grid, Animations)
 - JavaScript (ES6+)
 
-## File Structure
+### File Structure
 
 - `index.html`: Main HTML structure
 - `style.css`: All styling and animations
 - `script.js`: All functionality of the application
 
-## How It Works
+### How It Works
 
 1. Task Management:
    - New tasks can be added, edited, and deleted.
