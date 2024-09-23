@@ -1,40 +1,40 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from data.database import engine
-from models import Base
-from controllers import story_controller
+from models import Base, User, Story, Criteria, StoryCriteria
+from controllers import story_controller  # story_controller'ı import ediyoruz
 
-# Create database tables
+# Veritabanı tablolarını oluştur
 Base.metadata.create_all(bind=engine)
 
-# Create FastAPI application
+# FastAPI uygulamasını oluştur
 app = FastAPI(
-    title="Story Generation API",
-    description="An API for generating and managing stories",
+    title="Hikaye Oluşturma API'si",
+    description="Hikaye oluşturmak ve yönetmek için bir API",
     version="1.0.0"
 )
 
-# Configure CORS
+# CORS'u yapılandır
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins
+    allow_origins=["http://localhost:5174", "http://localhost:5173"],  # Sadece localhost:5173'e izin ver
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],  # Tüm metodlara izin ver
+    allow_headers=["*"],  # Tüm başlıklara izin ver
 )
 
-# Include story routes
+# Hikaye rotalarını dahil et
 app.include_router(story_controller.router, prefix="/stories", tags=["stories"])
 
-# Root endpoint
+# Kök endpoint
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the Story Generation API"}
+    return {"mesaj": "Hikaye Oluşturma API'sine Hoş Geldiniz"}
 
-# Database test endpoint
+# Veritabanı test endpoint'i
 @app.get("/db-test")
 def test_db():
-    return {"message": "Database connection successful!"}
+    return {"mesaj": "Veritabanı bağlantısı başarılı!"}
 
 if __name__ == "__main__":
     import uvicorn

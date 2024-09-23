@@ -1,36 +1,33 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, Enum
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy.types import Enum as SQLAlchemyEnum
+from enum import Enum
 from .base import Base
-import enum
+from .user import User  # User modelini import ediyoruz
 
 # Enum class for story genres
-class Genre(enum.Enum):
-    FANTASY = "Fantasy"
-    SCIENCE_FICTION = "Science Fiction"
-    ADVENTURE = "Adventure"
-    MYSTERY = "Mystery"
-    FAIRY_TALE = "Fairy Tale"
-    FABLE = "Fable"
-    HISTORICAL = "Historical"
-    EDUCATIONAL = "Educational"
+class Genre(str, Enum):
+    FANTASY = "FANTASY"
+    ADVENTURE = "ADVENTURE"
+    MYSTERY = "MYSTERY"
+    SCIENCE_FICTION = "SCIENCE_FICTION"
+    FAIRY_TALE = "FAIRY_TALE"
+    # Diğer türleri ekleyin...
 
 # Enum class for illustration styles
-class IllustrationStyle(enum.Enum):
-    CARTOON = "Cartoon"
-    REALISTIC = "Realistic"
-    WATERCOLOR = "Watercolor"
-    DIGITAL_ART = "Digital Art"
-    PENCIL_SKETCH = "Pencil Sketch"
-    ANIME = "Anime"
-    MINIMALIST = "Minimalist"
-    COLLAGE = "Collage"
+class IllustrationStyle(str, Enum):
+    CARTOON = "CARTOON"
+    REALISTIC = "REALISTIC"
+    WATERCOLOR = "WATERCOLOR"
+    DIGITAL = "DIGITAL"
+    # Diğer stilleri ekleyin...
 
 # Enum class for target age groups
-class TargetAge(enum.Enum):
-    AGE_0_3 = "0-3 Yaş"
-    AGE_4_6 = "4-6 Yaş"
-    AGE_7_9 = "7-9 Yaş"
-    AGE_10_12 = "10-12 Yaş"
+class TargetAge(str, Enum):
+    AGE_0_3 = "AGE_0_3"
+    AGE_4_6 = "AGE_4_6"
+    AGE_7_9 = "AGE_7_9"
+    AGE_10_12 = "AGE_10_12"
 
 # Story model representing the stories table in the database
 class Story(Base):
@@ -39,19 +36,19 @@ class Story(Base):
     # Primary key
     id = Column(Integer, primary_key=True, index=True)
     # Story title, indexed for faster queries
-    title = Column(String(100), index=True, nullable=False)
+    title = Column(String, index=True)
     # Story content
-    content = Column(Text, nullable=False)
+    content = Column(String)
     # Foreign key to link to the author (user)
-    author_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"))
     # Relationship to the User model
-    author = relationship("User", back_populates="stories")
+    user = relationship("User", back_populates="stories")
     # Genre of the story, using the Genre enum
-    genre = Column(Enum(Genre), nullable=False)
+    genre = Column(SQLAlchemyEnum(Genre), nullable=False)
     # Illustration style of the story, using the IllustrationStyle enum
-    illustration_style = Column(Enum(IllustrationStyle), nullable=False)
+    illustration_style = Column(SQLAlchemyEnum(IllustrationStyle), nullable=False)
     # Target age for the story, using the TargetAge enum
-    target_age = Column(Enum(TargetAge), nullable=False)
+    target_age = Column(SQLAlchemyEnum(TargetAge), nullable=False)
 
     # String representation of the Story object
     def __repr__(self):
