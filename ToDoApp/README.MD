@@ -2,6 +2,8 @@
 
 ## Türkçe
 
+
+
 Bu proje, modern web teknolojileri kullanılarak geliştirilmiş kapsamlı bir Todo uygulamasıdır. Uygulama, görev yönetimi, zamanlayıcı ve kronometre özelliklerini bir arada sunmaktadır.
 
 ### Özellikler
